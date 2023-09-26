@@ -1,19 +1,19 @@
 package com.projectfila;
 
-public class Fila {
-    private Node nodeRef;
+public class Fila<T> {
+    private Node<T> nodeRef;
 
     public Fila() {
         this.nodeRef = null;
     }
 
-    public void enqueue(Object obj) {
+    public void enqueue(T obj) {
         Node newNode = new Node(obj);
         newNode.setRefNode(nodeRef);
         nodeRef = newNode;
     }
 
-    public Object first() {
+    public T first() {
         if (!this.isEmpty()) {
             Node firstNode = nodeRef;
             while (true) {
@@ -23,12 +23,12 @@ public class Fila {
                     break;
                 }
             }
-            return firstNode.getObj();
+            return (T) firstNode.getObj();
         }
         return null;
     }
 
-    public Object dequeue() {
+    public T dequeue() {
         if (!this.isEmpty()) {
             Node firstNode = nodeRef;
             Node tempNode = nodeRef;
@@ -41,7 +41,7 @@ public class Fila {
                     break;
                 }
             }
-            return firstNode.getObj();
+            return (T) firstNode.getObj();
         }
         return null;
     }

@@ -1,11 +1,11 @@
 package com.projectfila;
 
-public class Node {
+public class Node<T> {
 
-    private Object obj;
-    private Node refNode;
+    private T obj;
+    private Node<T> refNode;
 
-    public Node(Object obj) {
+    public Node(T obj) {
         this.refNode = null;
         this.obj = obj;
     }
@@ -17,7 +17,7 @@ public class Node {
         return obj;
     }
 
-    public void setObj(Object obj) {
+    public void setObj(T obj) {
         this.obj = obj;
     }
 

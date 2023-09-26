@@ -3,7 +3,7 @@ package com.projectfila;
 public class Main {
     public static void main(String[] args) {
 
-        Fila newFila = new Fila();
+        Fila<String> newFila = new Fila<>();
 
         newFila.enqueue("First");
         newFila.enqueue("Second");
