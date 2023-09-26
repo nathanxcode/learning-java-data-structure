@@ -5,10 +5,10 @@ public class Main {
 
         Fila newFila = new Fila();
 
-        newFila.enqueue(new Node("First"));
-        newFila.enqueue(new Node("Second"));
-        newFila.enqueue(new Node("Third"));
-        newFila.enqueue(new Node("Fourth"));
+        newFila.enqueue("First");
+        newFila.enqueue("Second");
+        newFila.enqueue("Third");
+        newFila.enqueue("Fourth");
 
         System.out.println(newFila);
         System.out.println(newFila.dequeue());

@@ -7,12 +7,13 @@ public class Fila {
         this.nodeRef = null;
     }
 
-    public void enqueue(Node newNode) {
+    public void enqueue(Object obj) {
+        Node newNode = new Node(obj);
         newNode.setRefNode(nodeRef);
         nodeRef = newNode;
     }
 
-    public Node first() {
+    public Object first() {
         if (!this.isEmpty()) {
             Node firstNode = nodeRef;
             while (true) {
@@ -22,12 +23,12 @@ public class Fila {
                     break;
                 }
             }
-            return firstNode;
+            return firstNode.getObj();
         }
         return null;
     }
 
-    public Node dequeue() {
+    public Object dequeue() {
         if (!this.isEmpty()) {
             Node firstNode = nodeRef;
             Node tempNode = nodeRef;
@@ -40,7 +41,7 @@ public class Fila {
                     break;
                 }
             }
-            return firstNode;
+            return firstNode.getObj();
         }
         return null;
     }
