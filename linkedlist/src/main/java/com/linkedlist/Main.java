@@ -4,7 +4,6 @@ public class Main {
     public static void main(String[] args) {
 
         LinkedList myList = new LinkedList<>();
-        System.out.println(myList.size());
         myList.add(new Node(1));
         myList.add(new Node(2));
         myList.add(new Node(2));
