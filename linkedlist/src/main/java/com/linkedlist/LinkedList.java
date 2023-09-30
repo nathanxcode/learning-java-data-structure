@@ -8,6 +8,23 @@ public class LinkedList<T> {
         this.nodeRef = null;
     }
 
+    public void add(T value) {
+
+        Node<T> newNode = new Node<>(value);
+        if (this.isEmpty()) {
+            nodeRef = newNode;
+            return;
+        }
+
+        Node<T> tempNode = nodeRef;
+        for (int i = 0; i < this.size() - 1; i++) {
+            tempNode = tempNode.getNextNode();
+        }
+
+        tempNode.setNextNode(newNode);
+
+    }
+
     public int size() {
         int listSize = 0;
         Node<T> tempNode = nodeRef;
