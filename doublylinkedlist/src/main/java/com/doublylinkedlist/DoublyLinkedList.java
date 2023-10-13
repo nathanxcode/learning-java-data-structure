@@ -67,7 +67,44 @@ public class DoublyLinkedList<T> {
 
     }
 
+    public void remove(int index) {
+
+        if (index == 0) {
+            firstNode = firstNode.getNextNode();
+            if (firstNode != null) {
+                firstNode.setPrevNode(null);
+            }
+        } else {
+            DoublyNode<T> auxNode = getNode(index);
+            auxNode.getPrevNode().setNextNode(auxNode.getNextNode());
+            if (auxNode != lastNode) {
+                auxNode.getNextNode().setPrevNode(auxNode.getPrevNode());
+            } else {
+                lastNode = auxNode;
+            }
+        }
+
+        this.listSize--;
+
+    }
+
     public int size() {
         return listSize;
     }
+
+    @Override
+    public String toString() {
+        String str = "";
+
+        DoublyNode<T> auxNode = firstNode;
+        for (int i = 0; i < size(); i++) {
+            str += "[Node{content = " + auxNode.getContent() + " }] -> ";
+            auxNode = auxNode.getNextNode();
+        }
+
+        str += "NULL";
+
+        return str;
+    }
+
 }
