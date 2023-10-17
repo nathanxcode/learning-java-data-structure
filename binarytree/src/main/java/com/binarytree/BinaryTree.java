@@ -26,4 +26,43 @@ public class BinaryTree<T extends Comparable<T>> {
 
     }
 
+    public void showInOrder() {
+        System.out.println("Showing in order");
+        showInOrder(this.root);
+    }
+
+    private void showInOrder(BinNode<T> node) {
+        if (node != null) {
+            showInOrder(node.getLNode());
+            System.out.println(node.getContent() + ", ");
+            showInOrder(node.getRNode());
+        }
+    }
+
+    public void showInPosOrder() {
+        System.out.println("Showing pos order");
+        showInPosOrder(this.root);
+    }
+
+    private void showInPosOrder(BinNode<T> node) {
+        if (node != null) {
+            showInOrder(node.getLNode());
+            showInOrder(node.getRNode());
+            System.out.println(node.getContent() + ", ");
+        }
+    }
+
+    public void showInPreOrder() {
+        System.out.println("Showing pos order");
+        showInPreOrder(this.root);
+    }
+
+    private void showInPreOrder(BinNode<T> node) {
+        if (node != null) {
+            System.out.println(node.getContent() + ", ");
+            showInOrder(node.getLNode());
+            showInOrder(node.getRNode());
+        }
+    }
+
 }
