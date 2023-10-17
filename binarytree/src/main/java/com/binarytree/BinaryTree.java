@@ -26,6 +26,61 @@ public class BinaryTree<T extends Comparable<T>> {
 
     }
 
+    public void remove(T content) {
+        try {
+
+            BinNode<T> node = this.root;
+            BinNode<T> parent = null;
+            BinNode<T> children = null;
+            BinNode<T> temp = null;
+
+            while (node != null && !node.getContent().equals(content)) {
+                parent = node;
+                if (content.compareTo(node.getContent()) < 0) {
+                    node = node.getLNode();
+                } else {
+                    node = node.getRNode();
+                }
+            }
+
+            if (node == null) {
+                System.out.println("Content not find, try!");
+
+            }
+
+            if (parent == null) {
+                if (node.getRNode() == null) {
+                    this.root = node.getLNode();
+                } else if (node.getLNode() == null) {
+                    this.root = node.getRNode();
+                } else {
+                    for (temp = node, children = node.getLNode(); children
+                            .getRNode() != null; temp = children, children = children.getLNode()) {
+                        if (children != node.getLNode()) {
+                            temp.setRNode(children.getLNode());
+                            children.setLNode(root.getLNode());
+                        }
+                    }
+                    children.setRNode(root.getRNode());
+                    root = children;
+                }
+            } else if (node.getRNode() == null) {
+                if (parent.getLNode() == node) {
+                    parent.setLNode(node.getLNode());
+                } else {
+                    parent.setRNode(node.getLNode());
+
+                }
+            } else if (node.getLNode() == null) {
+
+            } else {
+
+            }
+        } catch (NullPointerException e) {
+            System.out.println("Not find, catch!");
+        }
+    }
+
     public void showInOrder() {
         System.out.println("Showing in order");
         showInOrder(this.root);
