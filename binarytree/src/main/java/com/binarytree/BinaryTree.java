@@ -69,11 +69,30 @@ public class BinaryTree<T extends Comparable<T>> {
                     parent.setLNode(node.getLNode());
                 } else {
                     parent.setRNode(node.getLNode());
-
                 }
             } else if (node.getLNode() == null) {
-
+                if (parent.getLNode() == node) {
+                    parent.setLNode(node.getRNode());
+                } else {
+                    parent.setRNode(node.getRNode());
+                }
             } else {
+
+                for (temp = node, children = node.getLNode(); children
+                        .getRNode() != null; temp = children, children = children.getRNode()) {
+
+                    if (children != node.getLNode()) {
+                        temp.setRNode(children.getLNode());
+                        children.setLNode(node.getLNode());
+                    }
+                    children.setRNode(node.getRNode());
+                    if (parent.getLNode() == node) {
+                        parent.setLNode(children);
+                    } else {
+                        parent.setRNode(children);
+                    }
+
+                }
 
             }
         } catch (NullPointerException e) {
